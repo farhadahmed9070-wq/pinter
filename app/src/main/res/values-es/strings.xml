@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bluetooth Print</string>
+    <string name="nav_home">Inicio</string>
+    <string name="nav_orders">Pedidos</string>
+    <string name="nav_templates">Plantillas</string>
+    <string name="nav_settings">Ajustes</string>
+    <string name="home_subtitle">Impresión Térmica POS y Móvil</string>
+    <string name="find_printer">Buscar Impresora</string>
+    <string name="find_printer_subtitle">Escanear impresoras térmicas de 58mm y 80mm</string>
+    <string name="printer_connected">Conectada</string>
+    <string name="printer_connecting">Conectando…</string>
+    <string name="printer_disconnected">Sin Impresora</string>
+    <string name="printer_tap_to_connect">Toca Buscar Impresora para conectar</string>
+    <string name="disconnect">Desconectar</string>
+    <string name="connect">Conectar</string>
+    <string name="quick_actions">Impresión Rápida</string>
+    <string name="action_new_order">Nuevo Pedido</string>
+    <string name="action_new_order_desc">Crear pedido detallado</string>
+    <string name="action_print_text">Imprimir Texto</string>
+    <string name="action_print_text_desc">Notas y etiquetas</string>
+    <string name="action_print_images">Imprimir Imágenes</string>
+    <string name="action_print_images_desc">Fotos de la galería</string>
+    <string name="action_print_receipts">Imprimir Recibos</string>
+    <string name="action_print_receipts_desc">Recibos de tienda y POS</string>
+    <string name="recent_orders">Pedidos Recientes</string>
+    <string name="view_all">Ver Todo</string>
+    <string name="reprint">Reimprimir</string>
+    <string name="orders_title">Pedidos</string>
+    <string name="templates_title">Plantillas de Recibo</string>
+    <string name="settings_title">Ajustes</string>
+    <string name="paper_size">Tamaño de Papel</string>
+    <string name="print_density">Densidad de Impresión</string>
+    <string name="app_language">Idioma de la App</string>
+    <string name="print_now">Imprimir Ahora</string>
+</resources>

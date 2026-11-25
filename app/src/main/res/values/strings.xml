@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bluetooth Print</string>
+
+    <!-- Bottom Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_orders">Orders</string>
+    <string name="nav_templates">Templates</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Home Screen -->
+    <string name="home_subtitle">Thermal POS &amp; Mobile Printing</string>
+    <string name="find_printer">Find Printer</string>
+    <string name="find_printer_subtitle">Scan &amp; pair nearby 58mm / 80mm thermal printers</string>
+    <string name="printer_connected">Connected</string>
+    <string name="printer_connecting">Connecting…</string>
+    <string name="printer_disconnected">No Printer Connected</string>
+    <string name="printer_tap_to_connect">Tap Find Printer to connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="connect">Connect</string>
+    <string name="quick_actions">Quick Print</string>
+    <string name="action_new_order">New Order</string>
+    <string name="action_new_order_desc">Create itemized order</string>
+    <string name="action_print_text">Print Text</string>
+    <string name="action_print_text_desc">Styled notes &amp; labels</string>
+    <string name="action_print_images">Print Images</string>
+    <string name="action_print_images_desc">Gallery photo dithering</string>
+    <string name="action_print_receipts">Print Receipts</string>
+    <string name="action_print_receipts_desc">Store &amp; POS receipts</string>
+    <string name="recent_orders">Recent Orders</string>
+    <string name="view_all">View All</string>
+    <string name="reprint">Reprint</string>
+    <string name="no_orders_yet">No print orders yet</string>
+    <string name="no_orders_hint">Create an order or print text, images, or receipts to see history here.</string>
+
+    <!-- Printer Discovery -->
+    <string name="printer_discovery_title">Find Printer</string>
+    <string name="scan_nearby">Scan Nearby Printers</string>
+    <string name="scanning_printers">Scanning for devices…</string>
+    <string name="stop_scan">Stop Scan</string>
+    <string name="paired_printers">Paired Devices</string>
+    <string name="nearby_printers">Nearby Discovered Devices</string>
+    <string name="bluetooth_permission_required">Bluetooth Permission Required</string>
+    <string name="bluetooth_permission_rationale">Allow Bluetooth access to discover and connect to nearby 58mm and 80mm thermal printers.</string>
+    <string name="grant_permission">Grant Permission</string>
+    <string name="bluetooth_off_title">Bluetooth is Turned Off</string>
+    <string name="bluetooth_off_desc">Enable Bluetooth on your device to scan and connect to thermal printers.</string>
+    <string name="enable_bluetooth">Turn On Bluetooth</string>
+    <string name="bluetooth_unavailable">Bluetooth hardware is unavailable on this device.</string>
+    <string name="open_bt_settings">System Bluetooth Settings</string>
+    <string name="print_test_page">Test Print</string>
+    <string name="no_paired_devices">No paired Bluetooth devices found.</string>
+    <string name="no_nearby_devices">Tap Scan Nearby Printers to search for thermal printers.</string>
+
+    <!-- Orders & New Order -->
+    <string name="orders_title">Orders</string>
+    <string name="search_orders">Search orders or items…</string>
+    <string name="filter_all">All</string>
+    <string name="filter_printed">Printed</string>
+    <string name="filter_saved">Saved</string>
+    <string name="filter_failed">Failed</string>
+    <string name="new_order_title">New Order</string>
+    <string name="order_number">Order #</string>
+    <string name="customer_name">Customer Name (Optional)</string>
+    <string name="add_item">Add Item</string>
+    <string name="item_name">Item Name</string>
+    <string name="qty">Qty</string>
+    <string name="price">Price</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="tax">Tax</string>
+    <string name="discount">Discount</string>
+    <string name="total">Total</string>
+    <string name="save_order">Save Order</string>
+    <string name="save_and_print">Save &amp; Print</string>
+    <string name="order_notes">Notes</string>
+
+    <!-- Templates -->
+    <string name="templates_title">Receipt Templates</string>
+    <string name="create_template">New Template</string>
+    <string name="edit_template">Edit Template</string>
+    <string name="template_name">Template Name</string>
+    <string name="business_name">Business Name</string>
+    <string name="business_address">Address / Subtitle</string>
+    <string name="business_phone">Phone / Tax ID</string>
+    <string name="footer_message">Footer Message</string>
+    <string name="currency_symbol">Currency</string>
+    <string name="default_tax">Default Tax %</string>
+    <string name="save_template">Save Template</string>
+    <string name="use_template">Use</string>
+    <string name="duplicate">Duplicate</string>
+    <string name="delete">Delete</string>
+
+    <!-- Print Text / Images / Receipts -->
+    <string name="print_text_title">Print Text</string>
+    <string name="enter_text_hint">Type or paste text to print on thermal paper…</string>
+    <string name="alignment">Alignment</string>
+    <string name="font_size">Text Size</string>
+    <string name="bold">Bold</string>
+    <string name="underline">Underline</string>
+    <string name="live_preview">Live Thermal Preview</string>
+    <string name="print_now">Print Now</string>
+
+    <string name="print_image_title">Print Images</string>
+    <string name="select_image">Select from Gallery</string>
+    <string name="dither_mode">Dithering</string>
+    <string name="brightness">Brightness</string>
+    <string name="no_image_selected">No image selected</string>
+    <string name="no_image_hint">Pick any photo, logo, or QR code from your gallery to convert it for thermal printing.</string>
+
+    <string name="print_receipt_title">Print Receipts</string>
+    <string name="select_template">Receipt Template</string>
+    <string name="receipt_date">Date &amp; Time</string>
+    <string name="include_qr">Include QR Verification Footer</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="section_bluetooth">Bluetooth</string>
+    <string name="section_printer_config">Printer Configuration</string>
+    <string name="section_language">Language</string>
+    <string name="paper_size">Paper Size</string>
+    <string name="print_density">Print Density</string>
+    <string name="feed_lines">Feed Lines After Print</string>
+    <string name="auto_cut">Auto Cut Paper (80mm)</string>
+    <string name="cash_drawer">Open Cash Drawer Pulse</string>
+    <string name="auto_reconnect">Auto-Reconnect Last Printer</string>
+    <string name="app_language">App Language</string>
+    <string name="back">Back</string>
+    <string name="close">Close</string>
+    <string name="preview">Preview</string>
+</resources>

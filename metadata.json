@@ -1,0 +1,6 @@
+{
+  "name": "Bluetooth Print",
+  "description": "Bluetooth thermal printer utility for discovering and connecting 58mm and 80mm ESC/POS printers, printing text, images, orders, and customizable receipts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

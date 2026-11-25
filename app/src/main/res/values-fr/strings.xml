@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bluetooth Print</string>
+    <string name="nav_home">Accueil</string>
+    <string name="nav_orders">Commandes</string>
+    <string name="nav_templates">Modèles</string>
+    <string name="nav_settings">Paramètres</string>
+    <string name="home_subtitle">Impression Thermique POS &amp; Mobile</string>
+    <string name="find_printer">Trouver Imprimante</string>
+    <string name="find_printer_subtitle">Rechercher des imprimantes 58mm et 80mm</string>
+    <string name="printer_connected">Connectée</string>
+    <string name="printer_connecting">Connexion…</string>
+    <string name="printer_disconnected">Aucune Imprimante</string>
+    <string name="printer_tap_to_connect">Appuyez sur Trouver Imprimante</string>
+    <string name="disconnect">Déconnecter</string>
+    <string name="connect">Connecter</string>
+    <string name="quick_actions">Impression Rapide</string>
+    <string name="action_new_order">Nouvelle Commande</string>
+    <string name="action_print_text">Imprimer Texte</string>
+    <string name="action_print_images">Imprimer Images</string>
+    <string name="action_print_receipts">Imprimer Reçus</string>
+    <string name="recent_orders">Commandes Récentes</string>
+    <string name="view_all">Tout Voir</string>
+    <string name="reprint">Réimprimer</string>
+    <string name="orders_title">Commandes</string>
+    <string name="templates_title">Modèles de Reçu</string>
+    <string name="settings_title">Paramètres</string>
+    <string name="paper_size">Format du Papier</string>
+    <string name="print_density">Densité d\'Impression</string>
+    <string name="app_language">Langue de l\'App</string>
+    <string name="print_now">Imprimer</string>
+</resources>

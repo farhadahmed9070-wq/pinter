@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bluetooth Print</string>
+    <string name="nav_home">الرئيسية</string>
+    <string name="nav_orders">الطلبات</string>
+    <string name="nav_templates">القوالب</string>
+    <string name="nav_settings">الإعدادات</string>
+    <string name="home_subtitle">الطباعة الحرارية عبر البلوتوث</string>
+    <string name="find_printer">البحث عن طابعة</string>
+    <string name="find_printer_subtitle">البحث عن طابعات 58 مم و 80 مم القريبة</string>
+    <string name="printer_connected">متصلة</string>
+    <string name="printer_connecting">جارٍ الاتصال…</string>
+    <string name="printer_disconnected">لا توجد طابعة متصلة</string>
+    <string name="disconnect">قطع الاتصال</string>
+    <string name="connect">اتصال</string>
+    <string name="quick_actions">طباعة سريعة</string>
+    <string name="action_new_order">طلب جديد</string>
+    <string name="action_print_text">طباعة نص</string>
+    <string name="action_print_images">طباعة صور</string>
+    <string name="action_print_receipts">طباعة إيصال</string>
+    <string name="recent_orders">أحدث الطلبات</string>
+    <string name="view_all">عرض الكل</string>
+    <string name="reprint">إعادة طباعة</string>
+    <string name="orders_title">الطلبات</string>
+    <string name="templates_title">قوالب الإيصالات</string>
+    <string name="settings_title">الإعدادات</string>
+    <string name="paper_size">حجم الورق</string>
+    <string name="print_density">كثافة الطباعة</string>
+    <string name="app_language">لغة التطبيق</string>
+    <string name="print_now">اطبع الآن</string>
+</resources>

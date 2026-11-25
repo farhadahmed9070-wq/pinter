@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bluetooth Print</string>
+    <string name="nav_home">হোম</string>
+    <string name="nav_orders">অর্ডার</string>
+    <string name="nav_templates">টেমপ্লেট</string>
+    <string name="nav_settings">সেটিংস</string>
+    <string name="home_subtitle">থার্মাল পিওএস ও মোবাইল প্রিন্টিং</string>
+    <string name="find_printer">প্রিন্টার খুঁজুন</string>
+    <string name="find_printer_subtitle">কাছের ৫৮মিমি ও ৮০মিমি প্রিন্টার স্ক্যান করুন</string>
+    <string name="printer_connected">সংযুক্ত</string>
+    <string name="printer_connecting">সংযোগ হচ্ছে…</string>
+    <string name="printer_disconnected">কোনো প্রিন্টার সংযুক্ত নেই</string>
+    <string name="disconnect">বিচ্ছিন্ন করুন</string>
+    <string name="connect">সংযুক্ত করুন</string>
+    <string name="quick_actions">দ্রুত প্রিন্ট</string>
+    <string name="action_new_order">নতুন অর্ডার</string>
+    <string name="action_print_text">টেক্সট প্রিন্ট</string>
+    <string name="action_print_images">ছবি প্রিন্ট</string>
+    <string name="action_print_receipts">রসিদ প্রিন্ট</string>
+    <string name="recent_orders">সাম্প্রতিক অর্ডার</string>
+    <string name="view_all">সব দেখুন</string>
+    <string name="reprint">পুনরায় প্রিন্ট</string>
+    <string name="orders_title">অর্ডারসমূহ</string>
+    <string name="templates_title">রসিদ টেমপ্লেট</string>
+    <string name="settings_title">সেটিংস</string>
+    <string name="paper_size">কাগজের মাপ</string>
+    <string name="print_density">প্রিন্ট ঘনত্ব</string>
+    <string name="app_language">অ্যাপের ভাষা</string>
+    <string name="print_now">এখনই প্রিন্ট করুন</string>
+</resources>
