@@ -48,6 +48,7 @@
     <string name="enable_bluetooth">Turn On Bluetooth</string>
     <string name="bluetooth_unavailable">Bluetooth hardware is unavailable on this device.</string>
     <string name="open_bt_settings">System Bluetooth Settings</string>
+    <string name="open_app_settings">Open App Settings</string>
     <string name="print_test_page">Test Print</string>
     <string name="no_paired_devices">No paired Bluetooth devices found.</string>
     <string name="no_nearby_devices">Tap Scan Nearby Printers to search for thermal printers.</string>

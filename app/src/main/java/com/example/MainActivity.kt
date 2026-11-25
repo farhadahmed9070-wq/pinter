@@ -2,6 +2,7 @@ package com.example
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivityResultRegistryOwner
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
@@ -32,6 +33,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -44,6 +46,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -85,11 +90,14 @@ class MainActivity : ComponentActivity() {
     setContent {
       val viewModel: BluetoothPrintViewModel = viewModel()
       val settings by viewModel.settings.collectAsStateWithLifecycle()
-      val baseContext = LocalContext.current
+      val baseContext = this@MainActivity
       val localizedContext =
         remember(settings.language) { LocaleHelper.wrapContext(baseContext, settings.language) }
 
-      CompositionLocalProvider(LocalContext provides localizedContext) {
+      CompositionLocalProvider(
+        LocalContext provides localizedContext,
+        LocalActivityResultRegistryOwner provides this@MainActivity,
+      ) {
         BluetoothPrintTheme {
           BluetoothPrintApp(viewModel = viewModel)
         }
@@ -125,6 +133,17 @@ private fun BluetoothPrintApp(viewModel: BluetoothPrintViewModel) {
 
   var selectedReceiptTemplateId by remember { mutableStateOf<Long?>(null) }
   var pendingOrderPreview by remember { mutableStateOf<PrintOrderEntity?>(null) }
+
+  val lifecycleOwner = LocalLifecycleOwner.current
+  DisposableEffect(lifecycleOwner) {
+    val observer = LifecycleEventObserver { _, event ->
+      if (event == Lifecycle.Event.ON_RESUME) {
+        viewModel.refreshBluetoothState()
+      }
+    }
+    lifecycleOwner.lifecycle.addObserver(observer)
+    onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+  }
 
   LaunchedEffect(Unit) {
     viewModel.messages.collect { message ->

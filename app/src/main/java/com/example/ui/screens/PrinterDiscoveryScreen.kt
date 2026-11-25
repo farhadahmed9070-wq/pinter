@@ -1,10 +1,13 @@
 package com.example.ui.screens
 
+import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.content.Intent
-import android.provider.Settings
+import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -45,6 +48,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -64,6 +71,8 @@ import com.example.ui.components.SubScreenTopBar
 import com.example.ui.theme.CobaltBlue
 import com.example.ui.theme.EmeraldConnected
 import com.example.ui.theme.EmeraldContainer
+import com.example.util.LocaleHelper
+import com.example.util.LocaleHelper.findActivity
 
 @Composable
 fun PrinterDiscoveryScreen(
@@ -83,17 +92,53 @@ fun PrinterDiscoveryScreen(
   onTestPrint: () -> Unit,
 ) {
   val context = LocalContext.current
+  var permissionPermanentlyDenied by remember { mutableStateOf(false) }
+
+  val enableBtLauncher =
+    rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) { result ->
+      onPermissionsResult()
+      if (result.resultCode == Activity.RESULT_OK) {
+        onStartScan()
+      }
+    }
+
+  fun launchEnableBluetooth() {
+    val launched =
+      runCatching {
+        enableBtLauncher.launch(Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE))
+      }.isSuccess
+    if (!launched) {
+      LocaleHelper.openBluetoothSettings(context)
+    }
+  }
 
   val permissionLauncher =
     rememberLauncherForActivityResult(
       contract = ActivityResultContracts.RequestMultiplePermissions()
-    ) {
+    ) { results ->
       onPermissionsResult()
-    }
-
-  val enableBtLauncher =
-    rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
-      onPermissionsResult()
+      val required = BluetoothPrinterManager.requiredPermissions()
+      val allGranted =
+        required.all { perm ->
+          results[perm] == true ||
+            ContextCompat.checkSelfPermission(context, perm) == PackageManager.PERMISSION_GRANTED
+        }
+      if (allGranted) {
+        permissionPermanentlyDenied = false
+        if (!isBluetoothEnabled) {
+          launchEnableBluetooth()
+        } else {
+          onStartScan()
+        }
+      } else {
+        val activity = context.findActivity()
+        val canShowRationale =
+          activity != null &&
+            required.any { perm ->
+              ActivityCompat.shouldShowRequestPermissionRationale(activity, perm)
+            }
+        permissionPermanentlyDenied = !canShowRationale
+      }
     }
 
   DisposableEffect(Unit) {
@@ -108,9 +153,7 @@ fun PrinterDiscoveryScreen(
         onBack = onBack,
         actions = {
           IconButton(
-            onClick = {
-              context.startActivity(Intent(Settings.ACTION_BLUETOOTH_SETTINGS))
-            },
+            onClick = { LocaleHelper.openBluetoothSettings(context) },
             modifier = Modifier.testTag("open_bt_settings_button"),
           ) {
             Icon(
@@ -197,7 +240,7 @@ fun PrinterDiscoveryScreen(
             title = "Bluetooth Unavailable",
             description = stringResource(R.string.bluetooth_unavailable),
             buttonLabel = stringResource(R.string.open_bt_settings),
-            onAction = { context.startActivity(Intent(Settings.ACTION_BLUETOOTH_SETTINGS)) },
+            onAction = { LocaleHelper.openBluetoothSettings(context) },
             testTag = "bt_unavailable_settings_btn",
           )
         }
@@ -206,10 +249,26 @@ fun PrinterDiscoveryScreen(
           InfoActionCard(
             title = stringResource(R.string.bluetooth_permission_required),
             description = stringResource(R.string.bluetooth_permission_rationale),
-            buttonLabel = stringResource(R.string.grant_permission),
+            buttonLabel =
+              if (permissionPermanentlyDenied) stringResource(R.string.open_app_settings)
+              else stringResource(R.string.grant_permission),
             onAction = {
-              permissionLauncher.launch(BluetoothPrinterManager.requiredPermissions())
+              if (permissionPermanentlyDenied) {
+                LocaleHelper.openAppSettings(context)
+              } else {
+                val launched =
+                  runCatching {
+                    permissionLauncher.launch(BluetoothPrinterManager.requiredPermissions())
+                  }.isSuccess
+                if (!launched) {
+                  LocaleHelper.openAppSettings(context)
+                }
+              }
             },
+            secondaryLabel =
+              if (!permissionPermanentlyDenied) stringResource(R.string.open_app_settings)
+              else null,
+            onSecondaryAction = { LocaleHelper.openAppSettings(context) },
             testTag = "grant_bt_permission_button",
           )
         }
@@ -219,9 +278,9 @@ fun PrinterDiscoveryScreen(
             title = stringResource(R.string.bluetooth_off_title),
             description = stringResource(R.string.bluetooth_off_desc),
             buttonLabel = stringResource(R.string.enable_bluetooth),
-            onAction = {
-              enableBtLauncher.launch(Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE))
-            },
+            onAction = { launchEnableBluetooth() },
+            secondaryLabel = stringResource(R.string.open_bt_settings),
+            onSecondaryAction = { LocaleHelper.openBluetoothSettings(context) },
             testTag = "enable_bt_button",
           )
         }
@@ -320,6 +379,8 @@ private fun InfoActionCard(
   buttonLabel: String,
   onAction: () -> Unit,
   testTag: String,
+  secondaryLabel: String? = null,
+  onSecondaryAction: (() -> Unit)? = null,
 ) {
   Card(
     shape = RoundedCornerShape(18.dp),
@@ -344,6 +405,16 @@ private fun InfoActionCard(
         modifier = Modifier.fillMaxWidth().testTag(testTag),
       ) {
         Text(buttonLabel)
+      }
+      if (secondaryLabel != null && onSecondaryAction != null) {
+        Spacer(modifier = Modifier.height(8.dp))
+        OutlinedButton(
+          onClick = onSecondaryAction,
+          shape = RoundedCornerShape(12.dp),
+          modifier = Modifier.fillMaxWidth().testTag("${testTag}_secondary"),
+        ) {
+          Text(secondaryLabel)
+        }
       }
     }
   }

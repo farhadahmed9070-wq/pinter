@@ -28,4 +28,19 @@
     <string name="print_density">প্রিন্ট ঘনত্ব</string>
     <string name="app_language">অ্যাপের ভাষা</string>
     <string name="print_now">এখনই প্রিন্ট করুন</string>
+    <string name="scan_nearby">কাছের প্রিন্টার স্ক্যান করুন</string>
+    <string name="scanning_printers">ডিভাইস খোঁজা হচ্ছে…</string>
+    <string name="stop_scan">স্ক্যান বন্ধ করুন</string>
+    <string name="paired_printers">পেয়ার করা ডিভাইস</string>
+    <string name="nearby_printers">কাছের পাওয়া ডিভাইস</string>
+    <string name="bluetooth_permission_required">ব্লুটুথ অনুমতি প্রয়োজন</string>
+    <string name="bluetooth_permission_rationale">কাছের ৫৮মিমি এবং ৮০মিমি থার্মাল প্রিন্টার খুঁজতে ও সংযুক্ত করতে ব্লুটুথ অনুমতি দিন।</string>
+    <string name="grant_permission">অনুমতি দিন</string>
+    <string name="bluetooth_off_title">ব্লুটুথ বন্ধ আছে</string>
+    <string name="bluetooth_off_desc">থার্মাল প্রিন্টার স্ক্যান ও সংযুক্ত করতে আপনার ফোনের ব্লুটুথ চালু করুন।</string>
+    <string name="enable_bluetooth">ব্লুটুথ চালু করুন</string>
+    <string name="bluetooth_unavailable">এই ডিভাইসে ব্লুটুথ পাওয়া যায়নি।</string>
+    <string name="open_bt_settings">সিস্টেম ব্লুটুথ সেটিংস</string>
+    <string name="open_app_settings">অ্যাপ সেটিংস খুলুন</string>
+    <string name="print_test_page">টেস্ট প্রিন্ট</string>
 </resources>

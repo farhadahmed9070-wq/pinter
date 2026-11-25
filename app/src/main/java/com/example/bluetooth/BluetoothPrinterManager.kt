@@ -38,11 +38,7 @@ class BluetoothPrinterManager(private val context: Context) {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
         arrayOf(Manifest.permission.BLUETOOTH_SCAN, Manifest.permission.BLUETOOTH_CONNECT)
       } else {
-        arrayOf(
-          Manifest.permission.ACCESS_FINE_LOCATION,
-          Manifest.permission.BLUETOOTH,
-          Manifest.permission.BLUETOOTH_ADMIN,
-        )
+        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)
       }
   }
 
@@ -181,11 +177,12 @@ class BluetoothPrinterManager(private val context: Context) {
         addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED)
         addAction(BluetoothDevice.ACTION_FOUND)
       }
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-      context.registerReceiver(discoveryReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
-    } else {
-      context.registerReceiver(discoveryReceiver, filter)
-    }
+    ContextCompat.registerReceiver(
+      context,
+      discoveryReceiver,
+      filter,
+      ContextCompat.RECEIVER_EXPORTED,
+    )
     receiverRegistered = true
   }
 

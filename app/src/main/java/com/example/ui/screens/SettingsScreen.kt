@@ -1,7 +1,5 @@
 package com.example.ui.screens
 
-import android.content.Intent
-import android.provider.Settings
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -49,6 +47,7 @@ import com.example.data.model.PrintDensity
 import com.example.data.model.PrinterConnectionState
 import com.example.data.model.PrinterEncoding
 import com.example.data.model.PrinterSettings
+import com.example.util.LocaleHelper
 import kotlin.math.roundToInt
 
 @Composable
@@ -127,7 +126,7 @@ fun SettingsScreen(
             Text(stringResource(R.string.find_printer))
           }
           OutlinedButton(
-            onClick = { context.startActivity(Intent(Settings.ACTION_BLUETOOTH_SETTINGS)) },
+            onClick = { LocaleHelper.openBluetoothSettings(context) },
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier.weight(1f).testTag("settings_system_bt_btn"),
           ) {

@@ -102,11 +102,15 @@ fun PrinterStatusCard(
   val isConnecting = connectionState is PrinterConnectionState.Connecting
 
   Card(
-    modifier = modifier.fillMaxWidth(),
+    onClick = { if (!isConnected) onFindPrinter() },
+    enabled = !isConnected,
+    modifier = modifier.fillMaxWidth().testTag("printer_status_card"),
     shape = RoundedCornerShape(20.dp),
     colors =
       CardDefaults.cardColors(
-        containerColor = MaterialTheme.colorScheme.surfaceContainerLowest
+        containerColor = MaterialTheme.colorScheme.surfaceContainerLowest,
+        disabledContainerColor = MaterialTheme.colorScheme.surfaceContainerLowest,
+        disabledContentColor = MaterialTheme.colorScheme.onSurface,
       ),
     border =
       BorderStroke(
